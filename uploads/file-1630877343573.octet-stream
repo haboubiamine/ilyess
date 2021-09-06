@@ -1,0 +1,740 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 22 juil. 2021 à 19:35
+-- Version du serveur :  5.7.28
+-- Version de PHP :  7.3.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `animadop`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonce`
+--
+
+DROP TABLE IF EXISTS `annonce`;
+CREATE TABLE IF NOT EXISTS `annonce` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `race` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `espece` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `age` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sexe` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `poids` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
+  `ville` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dressage` tinyint(1) DEFAULT NULL,
+  `papiers` tinyint(1) DEFAULT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `nombrePortees` int(11) DEFAULT NULL,
+  `prix` double DEFAULT NULL,
+  `termine` tinyint(1) DEFAULT NULL,
+  `taille` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_F65593E5DA6FBBAF` (`race`),
+  KEY `IDX_F65593E51A2A1B1` (`espece`),
+  KEY `IDX_F65593E58D93D649` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `annonce`
+--
+
+INSERT INTO `annonce` (`id`, `race`, `espece`, `user`, `type`, `titre`, `age`, `sexe`, `poids`, `description`, `ville`, `adresse`, `dressage`, `papiers`, `telephone`, `date`, `nombrePortees`, `prix`, `termine`, `taille`) VALUES
+(1, 'Turque', 'Chat', 4, 'Adoption', 'husky a vendre', NULL, 'Male', NULL, '<p>mlml</p>', 'Menzel Bou Zalfa', 'Cite ettahrir', 0, 0, '53151273', '2020-08-25', NULL, NULL, NULL, 'Grand'),
+(2, 'Berger', 'Chien', 4, 'Adoption', 'husky a vendre', '6 mois', 'Male', NULL, '<p>dqqd</p>', 'Menzel Bou Zalfa', 'Cite ettahrir', 0, 0, '53151273', '2020-09-02', NULL, NULL, NULL, 'Petit'),
+(3, 'Turque', 'Chat', 5, 'Trouve', 'husky perdus', '6 mois', 'Male', NULL, '<p>sqdqsd</p>', 'Menzel Bou Zalfa', 'Cite ettahrir', 0, 0, '53151273', '2020-10-05', NULL, NULL, NULL, 'Petit'),
+(4, 'Husky', 'Chien', 4, 'Vente', 'husky a vendre', '6 mois', 'Femelle', NULL, '<p>gfdhvtrvhcghvcg</p>', 'Menzel Bou Zalfa', 'Cite ettahrir', 1, 1, '53151273', '2020-09-04', 3, 750, NULL, 'Petit'),
+(5, 'Turque', 'Chat', 4, 'Adoption', 'ssqd', NULL, 'Femelle', NULL, NULL, 'sqs', 'qsqsq', 0, 1, '12122111', '2021-04-10', NULL, NULL, NULL, 'Petit'),
+(6, 'Turque', 'Chat', 4, 'Perte', 'ssqd', NULL, 'Male', NULL, NULL, 'sqs', 'qsqsq', 0, 0, '12122111', '2021-04-17', NULL, NULL, NULL, 'Petit');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `article`
+--
+
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `sub_categorie` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `categorie` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `promotion` int(11) DEFAULT NULL,
+  `marque` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `quantite` int(11) NOT NULL,
+  `prix` double NOT NULL,
+  `espece` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `visible` tinyint(1) NOT NULL,
+  PRIMARY KEY (`nom`),
+  UNIQUE KEY `UNIQ_23A0E66C11D7DD1` (`promotion`),
+  KEY `IDX_23A0E665B70908A` (`sub_categorie`),
+  KEY `IDX_23A0E66497DD634` (`categorie`),
+  KEY `IDX_23A0E665A6F91CE` (`marque`),
+  KEY `IDX_23A0E661A2A1B1` (`espece`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `article`
+--
+
+INSERT INTO `article` (`nom`, `sub_categorie`, `categorie`, `promotion`, `marque`, `description`, `quantite`, `prix`, `espece`, `visible`) VALUES
+('dsd', 'souscatgeorie1', 'categorie2', NULL, 'Pawbits', '<p>sdfsdf</p>', 20, 17, 'Chien', 1),
+('Pawbits Joint', 'souscatgeorie3', 'categorie1', 1, 'Pawbits', '<p>uygkghgkh</p>', 7, 22.3, 'Chat', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `type`) VALUES
+(1, 'maladie'),
+(2, 'vaccin'),
+(3, 'Divers');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie_article`
+--
+
+DROP TABLE IF EXISTS `categorie_article`;
+CREATE TABLE IF NOT EXISTS `categorie_article` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `espece` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_5DB9A0C41A2A1B1` (`espece`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `categorie_article`
+--
+
+INSERT INTO `categorie_article` (`id`, `espece`) VALUES
+('categorie1', 'Chat'),
+('categorie2', 'Chien');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT NULL,
+  `date` date NOT NULL,
+  `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `total` double NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ville` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `codePostal` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_6EEAA67D8D93D649` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id`, `user`, `date`, `status`, `total`, `nom`, `prenom`, `telephone`, `ville`, `adresse`, `codePostal`, `email`) VALUES
+(1, NULL, '2020-08-06', 'Done', 22.3, 'ala', 'ahmed', '53151273', 'Menzel Bou Zalfa', 'Cite ettahrir', '8010', 'ala.ahmed@esprit.tn'),
+(2, NULL, '2020-08-06', 'nouvelle', 22.3, 'ala', 'ahmed', '53151273', 'Menzel Bou Zalfa', 'Cite ettahrir', '8010', 'ala.ahmed@esprit.tn'),
+(3, NULL, '2020-08-06', 'nouvelle', 22.3, 'ala', 'ahmed', '53151273', 'Menzel Bou Zalfa', 'Cite ettahrir', '8010', 'ala.ahmed@esprit.tn'),
+(4, NULL, '2020-08-06', 'nouvelle', 22.3, 'ala', 'ahmed', '53151273', 'Menzel Bou Zalfa', 'Cite ettahrir', '8010', 'ala.ahmed@esprit.tn'),
+(5, NULL, '2020-08-06', 'nouvelle', 22.3, 'ala', 'ahmed', '53151273', 'Menzel Bou Zalfa', 'Cite ettahrir', '8010', 'ala.ahmed@esprit.tn'),
+(6, 4, '2020-08-25', 'nouvelle', 22.3, 'Ahmed', 'Ala', '53151273', 'Menzel Bou Zalfa', 'Cite ettahrir', '8010', 'ala.ahmed@esprit.tn');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaire`
+--
+
+DROP TABLE IF EXISTS `commentaire`;
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT NULL,
+  `publication` int(11) DEFAULT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_67F068BC8D93D649` (`user`),
+  KEY `IDX_67F068BCAF3C6779` (`publication`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `commentaire`
+--
+
+INSERT INTO `commentaire` (`id`, `user`, `publication`, `content`, `date`) VALUES
+(1, 4, 2, 'test', '2020-10-08');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `conseil`
+--
+
+DROP TABLE IF EXISTS `conseil`;
+CREATE TABLE IF NOT EXISTS `conseil` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contenu` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `categorie` int(11) DEFAULT NULL,
+  `espece` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3F3F0681497DD634` (`categorie`),
+  KEY `IDX_3F3F06811A2A1B1` (`espece`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `conseil`
+--
+
+INSERT INTO `conseil` (`id`, `titre`, `contenu`, `image`, `categorie`, `espece`) VALUES
+(1, '\'Augie\' breaks record as world\'s oldest golden retriever at age 20', '<p>fdsfdsf</p>', 'min-pet1-5f4f6bfa790cf.png', 3, 'Chat'),
+(2, 'dfdsfsdfdsf', '<p>dsfqdsfqdsf</p>', 'min-home_5-5f51ef17aa6ae.gif', 1, 'Chien');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE IF NOT EXISTS `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `vu` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `contact`
+--
+
+INSERT INTO `contact` (`id`, `nom`, `prenom`, `email`, `telephone`, `message`, `vu`) VALUES
+(1, 'ahmed', 'ala', 'ala.ahmed@esprit.tn', '53151273', 'test', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `espece`
+--
+
+DROP TABLE IF EXISTS `espece`;
+CREATE TABLE IF NOT EXISTS `espece` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `espece`
+--
+
+INSERT INTO `espece` (`id`) VALUES
+('Chat'),
+('Chien');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `image`
+--
+
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `annonce` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_C53D045FF65593E5` (`annonce`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `image`
+--
+
+INSERT INTO `image` (`id`, `image`, `annonce`) VALUES
+(17, 'min-home_4-5f458cab2b762.png', 1),
+(18, 'min-home_3-5f458cac96258.png', 1),
+(19, 'min-home_1-5f458cae7c72a.png', 1),
+(20, 'min-pet1-5f4f61d25340d.png', 2),
+(21, 'min-pet2-5f4f61d3213d6.png', 2),
+(22, 'min-pet3-5f4f61d40cc7a.png', 2),
+(24, 'min-pet1-5f51fae489fbc.png', 4),
+(25, 'min-pet2-5f51fae54ac03.png', 4),
+(26, 'min-pet3-5f51fae5b3bcc.png', 4),
+(27, 'min-pet1-5f7a9f110a056.png', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `image_produit`
+--
+
+DROP TABLE IF EXISTS `image_produit`;
+CREATE TABLE IF NOT EXISTS `image_produit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Produit` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BCB5BBFBE618D5BB` (`Produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `image_produit`
+--
+
+INSERT INTO `image_produit` (`id`, `image`, `Produit`) VALUES
+(1, 'min-pet1-5f24b44f1208f.png', 'Pawbits Joint'),
+(2, 'min-pet2-5f24b44f87206.png', 'Pawbits Joint'),
+(4, 'min-pet3-5f24b75289ccb.png', 'Pawbits Joint'),
+(7, 'min-pet3-5f6c02e7b781f.png', 'Pawbits Joint'),
+(8, 'min-pet3-5f7ebf456b1ec.png', 'dsd'),
+(9, 'min-pet2-5f7ebf46aee62.png', 'dsd'),
+(10, 'min-pet1-5f7ebf47c9578.png', 'dsd');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ligne_commande`
+--
+
+DROP TABLE IF EXISTS `ligne_commande`;
+CREATE TABLE IF NOT EXISTS `ligne_commande` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantite` int(11) NOT NULL,
+  `Commande` int(11) DEFAULT NULL,
+  `Produit` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3170B74B979CC42B` (`Commande`),
+  KEY `IDX_3170B74BE618D5BB` (`Produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `ligne_commande`
+--
+
+INSERT INTO `ligne_commande` (`id`, `quantite`, `Commande`, `Produit`) VALUES
+(1, 1, 1, 'Pawbits Joint'),
+(2, 1, 2, 'Pawbits Joint'),
+(3, 1, 3, 'Pawbits Joint'),
+(4, 1, 4, 'Pawbits Joint'),
+(5, 1, 5, 'Pawbits Joint'),
+(6, 1, 6, 'Pawbits Joint');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `marque`
+--
+
+DROP TABLE IF EXISTS `marque`;
+CREATE TABLE IF NOT EXISTS `marque` (
+  `marque` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`marque`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `marque`
+--
+
+INSERT INTO `marque` (`marque`) VALUES
+('Pawbits');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notification`
+--
+
+DROP TABLE IF EXISTS `notification`;
+CREATE TABLE IF NOT EXISTS `notification` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contenu` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `post_id` int(11) DEFAULT NULL,
+  `vu` tinyint(1) NOT NULL,
+  `user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_BF5476CA8D93D649` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `notification`
+--
+
+INSERT INTO `notification` (`id`, `type`, `contenu`, `user_id`, `post_id`, `vu`, `user`) VALUES
+(1, 'annonce', 'pense que cet animal est à lui', 5, 3, 1, 4),
+(2, 'annonce', 'pense que cet animal est à lui', 5, 3, 1, 4),
+(3, 'annonce', 'pense que cet animal est à lui', 5, 3, 1, 4),
+(4, 'comment', ' a commenté votre publication ', 5, 2, 1, 4),
+(5, 'annonce', 'pense qu\'il a trouvé votre animal', 4, 6, 0, 5),
+(6, 'annonce', 'pense qu\'il a trouvé votre animal', 4, 6, 0, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `partenaire`
+--
+
+DROP TABLE IF EXISTS `partenaire`;
+CREATE TABLE IF NOT EXISTS `partenaire` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `partenaire`
+--
+
+INSERT INTO `partenaire` (`id`, `nom`, `logo`, `lien`) VALUES
+(1, 'instagram', 'min-cv-5f7ffac87a587.jpeg', 'https://www.instagram.com/?hl=fr'),
+(2, 'instagram 2', 'min-pet1-5f7ffae7b795d.png', 'https://www.instagram.com/?hl=fr');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `promotion`
+--
+
+DROP TABLE IF EXISTS `promotion`;
+CREATE TABLE IF NOT EXISTS `promotion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valeur` double NOT NULL,
+  `dateDebut` date NOT NULL,
+  `dateFin` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `promotion`
+--
+
+INSERT INTO `promotion` (`id`, `valeur`, `dateDebut`, `dateFin`) VALUES
+(1, 20, '2020-10-05', '2020-10-15');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publication`
+--
+
+DROP TABLE IF EXISTS `publication`;
+CREATE TABLE IF NOT EXISTS `publication` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `espece` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user` int(11) DEFAULT NULL,
+  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `contenu` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `photo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_AF3C67791A2A1B1` (`espece`),
+  KEY `IDX_AF3C67798D93D649` (`user`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `publication`
+--
+
+INSERT INTO `publication` (`id`, `espece`, `user`, `titre`, `contenu`, `date`, `photo`) VALUES
+(1, 'Chat', 5, 'Demande conseil pour dressage de chiot ?', '<p>dsdsdsd</p>', '2020-09-19', 'min-pet2-5f6699022cb7c.png'),
+(2, 'Chien', 5, 'test', '<p>azaz</p>', '2020-09-20', 'min-cv-5f66991aa4eb5.jpeg');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publicite`
+--
+
+DROP TABLE IF EXISTS `publicite`;
+CREATE TABLE IF NOT EXISTS `publicite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `publicite`
+--
+
+INSERT INTO `publicite` (`id`, `name`, `image`, `lien`) VALUES
+(1, 'FirstHomeSlider', 'min-banner1-5f52015f607df.png', '#'),
+(2, 'SecondHomeSlider', 'min-banner2-5f520175c0d6f.png', '#'),
+(3, 'MiddelBanner', 'min-bannersmall1-5f5201892362d.png', 'https://animadop.tn/register/'),
+(4, 'LeftBanner', 'min-promoproductimage2-5f520205722d6.jpeg', '#'),
+(5, 'RightBanner', 'min-promoproductimage2-5f5202156b102.jpeg', '#'),
+(6, 'TopMiddelBanner', 'min-promoproductimagesm-5f5202331d554.jpeg', '#'),
+(7, 'BottomMiddleBanner', 'min-promoproductimagesm-5f5202477b4e9.jpeg', '#');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `race`
+--
+
+DROP TABLE IF EXISTS `race`;
+CREATE TABLE IF NOT EXISTS `race` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `espece` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_DA6FBBAF1A2A1B1` (`espece`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `race`
+--
+
+INSERT INTO `race` (`id`, `espece`) VALUES
+('Turque', 'Chat'),
+('Berger', 'Chien'),
+('Husky', 'Chien');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sous_categorie_article`
+--
+
+DROP TABLE IF EXISTS `sous_categorie_article`;
+CREATE TABLE IF NOT EXISTS `sous_categorie_article` (
+  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `categorie` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_9C9C7533497DD634` (`categorie`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `sous_categorie_article`
+--
+
+INSERT INTO `sous_categorie_article` (`id`, `categorie`) VALUES
+('souscatgeorie2', 'categorie1'),
+('souscatgeorie3', 'categorie1'),
+('souscatgeorie1', 'categorie2');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `username_canonical` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `email_canonical` varchar(180) COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  `salt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `confirmation_token` varchar(180) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password_requested_at` datetime DEFAULT NULL,
+  `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dateNaissance` date DEFAULT NULL,
+  `sexe` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `photoProfile` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default.png',
+  `ville` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bio` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `code_postal` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `inscription_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D64992FC23A8` (`username_canonical`),
+  UNIQUE KEY `UNIQ_8D93D649A0D96FBF` (`email_canonical`),
+  UNIQUE KEY `UNIQ_8D93D649C05FB297` (`confirmation_token`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`, `nom`, `prenom`, `dateNaissance`, `sexe`, `telephone`, `photoProfile`, `ville`, `adresse`, `bio`, `code_postal`, `inscription_date`) VALUES
+(4, 'admin', 'admin', 'ala.ahmed@esprit.tn', 'ala.ahmed@esprit.tn', 1, NULL, '$2y$13$fg//pLKP9i7mge20eQTSv.PVrhhpwVllNOW9y77p1ElcWrb4mAWGm', '2021-04-15 09:01:29', NULL, NULL, 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}', 'Ahmed', 'Ala', NULL, 'Homme', '53151273', 'default.png', 'Menzel Bou Zalfa', 'Cite ettahrir', NULL, '8010', NULL),
+(5, 'fatmaessafi', 'fatmaessafi', 'fatma.essafi@esprit.tn', 'fatma.essafi@esprit.tn', 1, NULL, '$2y$13$yd95IXzalVWjWdsGLSHk2OS6BUHBI5zF1AEgRUREeklBkKrQZ9AjC', '2021-04-17 11:20:53', 'CspYO8ZWH4txU3YL24ZV-2Ar3T6uI3arTE6yRCFnZyA', '2020-06-30 18:36:39', 'a:0:{}', 'Essafi', 'Fatma', '1996-10-27', 'Femme', '55271016', 'min-fatma-5f0734db9ba4d.jpeg', 'Ariana', 'Menzah 9', NULL, '2037', NULL),
+(6, 'tets', 'tets', 'ahmed.yaya66974@gmail.com', 'ahmed.yaya66974@gmail.com', 0, NULL, '$2y$13$0/UYSZqZ2AU17akyBSven.y7V1/6/eHeEaogCE41uhU2U7kdZ/9Re', NULL, 'p44G3yjnrnbQlGGJvUiMswr4nv4qCXAgubaojcNABfs', NULL, 'a:0:{}', 'a', 'dsd', NULL, 'Homme', '29218184', 'default.png', 'MBZ', 'LFSS', NULL, '8010', '2021-04-15 09:00:45');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `veterinaire`
+--
+
+DROP TABLE IF EXISTS `veterinaire`;
+CREATE TABLE IF NOT EXISTS `veterinaire` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ville` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `garde` tinyint(1) NOT NULL,
+  `horaire_start` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `horaire_end` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `samedi_start` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `samedi_end` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dimanche_start` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dimanche_end` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Déchargement des données de la table `veterinaire`
+--
+
+INSERT INTO `veterinaire` (`id`, `nom`, `ville`, `adresse`, `telephone`, `description`, `garde`, `horaire_start`, `horaire_end`, `samedi_start`, `samedi_end`, `dimanche_start`, `dimanche_end`, `prenom`) VALUES
+(1, 'ala', 'Menzel Bou Zalfa', 'Cite ettahrir', '53151273', 'test', 0, '09:00', '18:00', '09:00', '15:00', '09:00', '12:00', 'ahmed');
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `annonce`
+--
+ALTER TABLE `annonce`
+  ADD CONSTRAINT `FK_F65593E51A2A1B1` FOREIGN KEY (`espece`) REFERENCES `espece` (`id`),
+  ADD CONSTRAINT `FK_F65593E58D93D649` FOREIGN KEY (`user`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `FK_F65593E5DA6FBBAF` FOREIGN KEY (`race`) REFERENCES `race` (`id`);
+
+--
+-- Contraintes pour la table `article`
+--
+ALTER TABLE `article`
+  ADD CONSTRAINT `FK_23A0E661A2A1B1` FOREIGN KEY (`espece`) REFERENCES `espece` (`id`),
+  ADD CONSTRAINT `FK_23A0E66497DD634` FOREIGN KEY (`categorie`) REFERENCES `categorie_article` (`id`),
+  ADD CONSTRAINT `FK_23A0E665A6F91CE` FOREIGN KEY (`marque`) REFERENCES `marque` (`marque`),
+  ADD CONSTRAINT `FK_23A0E665B70908A` FOREIGN KEY (`sub_categorie`) REFERENCES `sous_categorie_article` (`id`),
+  ADD CONSTRAINT `FK_23A0E66C11D7DD1` FOREIGN KEY (`promotion`) REFERENCES `promotion` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `categorie_article`
+--
+ALTER TABLE `categorie_article`
+  ADD CONSTRAINT `FK_5DB9A0C41A2A1B1` FOREIGN KEY (`espece`) REFERENCES `espece` (`id`);
+
+--
+-- Contraintes pour la table `commande`
+--
+ALTER TABLE `commande`
+  ADD CONSTRAINT `FK_6EEAA67D8D93D649` FOREIGN KEY (`user`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `commentaire`
+--
+ALTER TABLE `commentaire`
+  ADD CONSTRAINT `FK_67F068BC8D93D649` FOREIGN KEY (`user`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `FK_67F068BCAF3C6779` FOREIGN KEY (`publication`) REFERENCES `publication` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `conseil`
+--
+ALTER TABLE `conseil`
+  ADD CONSTRAINT `FK_3F3F06811A2A1B1` FOREIGN KEY (`espece`) REFERENCES `espece` (`id`),
+  ADD CONSTRAINT `FK_3F3F0681497DD634` FOREIGN KEY (`categorie`) REFERENCES `categorie` (`id`);
+
+--
+-- Contraintes pour la table `image`
+--
+ALTER TABLE `image`
+  ADD CONSTRAINT `FK_C53D045FF65593E5` FOREIGN KEY (`annonce`) REFERENCES `annonce` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `image_produit`
+--
+ALTER TABLE `image_produit`
+  ADD CONSTRAINT `FK_BCB5BBFBE618D5BB` FOREIGN KEY (`Produit`) REFERENCES `article` (`nom`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `ligne_commande`
+--
+ALTER TABLE `ligne_commande`
+  ADD CONSTRAINT `FK_3170B74B979CC42B` FOREIGN KEY (`Commande`) REFERENCES `commande` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_3170B74BE618D5BB` FOREIGN KEY (`Produit`) REFERENCES `article` (`nom`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `notification`
+--
+ALTER TABLE `notification`
+  ADD CONSTRAINT `FK_BF5476CA8D93D649` FOREIGN KEY (`user`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `publication`
+--
+ALTER TABLE `publication`
+  ADD CONSTRAINT `FK_AF3C67791A2A1B1` FOREIGN KEY (`espece`) REFERENCES `espece` (`id`),
+  ADD CONSTRAINT `FK_AF3C67798D93D649` FOREIGN KEY (`user`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `race`
+--
+ALTER TABLE `race`
+  ADD CONSTRAINT `FK_DA6FBBAF1A2A1B1` FOREIGN KEY (`espece`) REFERENCES `espece` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `sous_categorie_article`
+--
+ALTER TABLE `sous_categorie_article`
+  ADD CONSTRAINT `FK_9C9C7533497DD634` FOREIGN KEY (`categorie`) REFERENCES `categorie_article` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
